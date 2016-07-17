@@ -116,4 +116,14 @@ public class FileHelper {
         }
         return result;
     }
+
+    /**
+     * get discount preference by discount config file
+     * @return
+     */
+    public static String getDiscountPreference(String tag) {
+        String text = readFile(Consts.DISCOUNT_FILE_PATH);
+        JSONObject jsonObject = JSON.parseObject(text);
+        return jsonObject.get(tag).toString();
+    }
 }
