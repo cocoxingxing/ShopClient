@@ -4,7 +4,15 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.HashSet;
 import java.util.Hashtable;
+import java.util.Set;
+
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson.JSONObject;
+
+import tju.edu.coco.consts.Consts;
 
 /**
  * Created by Administrator on 2016/7/17.
@@ -90,5 +98,22 @@ public class FileHelper {
             }
         }
         return values;
+    }
+
+    /**
+     * get discount items from discount config file
+     * @param type
+     * @return
+     */
+    public static Set<String> getDiscountItemsByType(String type) {
+        String text = readFile(Consts.DISCOUNT_FILE_PATH);
+        JSONObject jsonObject = JSON.parseObject(text);
+
+        Set<String> result = new HashSet<String>();
+        JSONArray jsonArray = JSON.parseArray(jsonObject.get(type).toString());
+        for(int i = 0; i < jsonArray.size(); ++i) {
+            result.add(jsonArray.get(i).toString());
+        }
+        return result;
     }
 }

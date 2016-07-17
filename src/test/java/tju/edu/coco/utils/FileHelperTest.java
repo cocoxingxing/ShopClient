@@ -1,8 +1,9 @@
 package tju.edu.coco.utils;
 
-import org.junit.Test;
+import java.util.Set;
 
-import java.io.File;
+import org.junit.Test;
+import tju.edu.coco.consts.Consts;
 
 import static org.junit.Assert.*;
 
@@ -11,10 +12,14 @@ import static org.junit.Assert.*;
  */
 public class FileHelperTest {
     @Test
-    public void readFileToItems() throws Exception {
-        String filePath = "././data/items.txt";
+    public void should_return_size_3_when_read_from_items_file() throws Exception {
+        String filePath = Consts.ITEM_FILE_PATH;
         assertEquals(3, FileHelper.readFileToItems(filePath).size());
-        assertEquals(new Integer(3), FileHelper.readFileToItems(filePath).get("ITEM000005"));
-        assertEquals(new Integer(2), FileHelper.readFileToItems(filePath).get("ITEM000003"));
+    }
+
+    @Test
+    public void should_return_size_2_when_parse_discount_file() {
+        Set<String> discounts = FileHelper.getDiscountItemsByType("3for2");
+        assertEquals(2, discounts.size());
     }
 }
