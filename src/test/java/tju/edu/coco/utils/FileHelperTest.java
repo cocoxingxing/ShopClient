@@ -22,7 +22,7 @@ public class FileHelperTest {
         Set<String> discounts = FileHelper.getDiscountItemsByType("3for2");
         assertEquals(2, discounts.size());
     }
-    
+
     @Test
     public void should_return_3for2_when_get_preference_from_discount_file() {
         String tag = "preference";
