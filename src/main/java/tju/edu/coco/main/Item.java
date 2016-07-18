@@ -8,6 +8,7 @@ public class Item {
     private String name; // shop item name
     private double price; // shop item price(yuan)
     private String code; // shop item identification code
+    private String unit; // shop item unit
 
     public void setName(String name) {
         this.name = name;
@@ -28,5 +29,12 @@ public class Item {
     }
     public String getCode() {
         return this.code;
+    }
+
+    public void setUnit(String unit) {
+        this.unit = unit;
+    }
+    public String getUnit() {
+        return this.unit;
     }
 }

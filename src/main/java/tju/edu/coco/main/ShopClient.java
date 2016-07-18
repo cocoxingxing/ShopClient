@@ -4,9 +4,7 @@
 
 package tju.edu.coco.main;
 
-import java.util.Set;
-import java.util.HashSet;
-import java.util.Hashtable;
+import java.util.*;
 
 import tju.edu.coco.consts.Consts;
 import tju.edu.coco.utils.FileHelper;
@@ -16,6 +14,11 @@ public class ShopClient {
     private Set<String> discount95 = new HashSet<String>();
     private Hashtable<String, Item> dbItems = new Hashtable<String, Item>();
     private Hashtable<String, Integer> shoppingItems = new Hashtable<String, Integer>();
+
+    public ShopClient() {
+        loadConfigInfo();
+        loadDBItems();
+    }
 
     /**
      * load the discount items info from discount config file
@@ -44,5 +47,6 @@ public class ShopClient {
      * settlement for the shopping items
      */
     public void settlement() {
+
     }
 }
