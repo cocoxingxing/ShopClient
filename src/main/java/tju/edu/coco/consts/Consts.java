@@ -9,6 +9,8 @@ public class Consts {
     // file path of discount info
     public static String DISCOUNT_FILE_PATH = "././data/discount.json";
 
+    public static String DB_FILE_PATH = "././data/db.json";
+
     // tag for parsing the discount config file
     public static String DISCOUNT_3_FOR_2_TAG = "3for2";
     public static String DISCOUNT_95_TAG = "95%";

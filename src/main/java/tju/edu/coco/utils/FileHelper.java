@@ -6,13 +6,17 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.HashSet;
 import java.util.Hashtable;
+import java.util.List;
 import java.util.Set;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 
+import sun.management.snmp.jvmmib.JvmThreadInstanceTableMeta;
 import tju.edu.coco.consts.Consts;
+import tju.edu.coco.main.Item;
+
 
 /**
  * Created by Administrator on 2016/7/17.
@@ -125,5 +129,16 @@ public class FileHelper {
         String text = readFile(Consts.DISCOUNT_FILE_PATH);
         JSONObject jsonObject = JSON.parseObject(text);
         return jsonObject.get(tag).toString();
+    }
+
+    public static Hashtable<String, Item> getDBItems(String path) {
+        String text = FileHelper.readFile(path);
+        List<Item> listItems = JSONArray.parseArray(text, Item.class);
+
+        Hashtable<String, Item> dbItems = new Hashtable<String, Item>();
+        for(Item item : listItems) {
+            dbItems.put(item.getCode(), item);
+        }
+        return dbItems;
     }
 }
